@@ -1,0 +1,98 @@
+<div class="row">
+  <h4>Lista de alunos</h4>
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Nome" id="name" type="text" class="validate" />
+        <label class="active" for="first_name">Nome</label>
+      </div>
+      <div class="input-field col s12">
+        <input placeholder="Curso" id="curso" type="text" class="validate" />
+        <label class="active" for="first_name">Curso</label>
+      </div>
+      <div class="input-field col s12">
+        <input
+          placeholder="Matricula"
+          id="matricula"
+          type="text"
+          class="validate"
+        />
+        <label class="active" for="first_name">Matricula</label>
+      </div>
+    </div>
+  </form>
+  <button
+    class="btn waves-effect waves-light"
+    onclick="salvarDados()"
+    name="action"
+  >
+    Salvar
+    <i class="material-icons right">send</i>
+  </button>
+  <button
+    class="btn waves-effect waves-light"
+    onclick="listarDados()"
+    name="action"
+  >
+    Listar
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+<ul id="pessoas" class="collection"></ul>
+
+<script>
+  function listarDados() {
+    $.getJSON("http://localhost:3000/alunos", function (data, status) {
+      console.log(data);
+
+      let pessoas = [];
+
+      for (const pessoa of data) {
+        pessoas.push(`
+            <li class="collection-item avatar">
+            <img src="../assets/images/perfil.jpg" alt="" class="circle">
+            <span class="title">${pessoa.nome}</span>
+            <p>${pessoa.curso || "Não tem"} <br>
+                ${pessoa.matricula || "Não tem"} 
+            </p>
+            <a href="#!" class="secondary-content"><i onclick="editarDados(${pessoa.id})" class="material-icons">remove_red_eye</i></a>
+            </li>
+            `);
+      }
+
+      $("#pessoas").html(pessoas);
+    });
+  }
+
+  function editarDados(id){
+      $.getJSON(`http://localhost:3000/alunos/${id}`, function (data, status) {
+          
+          $('#name').val(data.nome)
+          $('#curso').val(data.curso)
+          $('#matricula').val(data.matricula)
+          
+    })
+  }
+
+  function salvarDados() {
+    // var nome = $("input")
+
+    var dados = $("input");
+
+    dadosSalvar = {
+      nome: dados[0].value,
+      curso: dados[1].value,
+      matricula: dados[2].value,
+    };
+
+    // console.log("salvar dados", dadosSalvar)
+
+    // fetch("http://localhost:3000/alunos", {method: "post", dadosSalvar}).then(function(re))
+
+    $.post("http://localhost:3000/alunos", dadosSalvar, function (result) {
+      console.log("os dados foram salvos", result);
+    });
+
+    listarDados()
+  }
+</script>

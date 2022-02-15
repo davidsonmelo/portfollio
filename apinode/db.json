@@ -1,0 +1,52 @@
+{
+  "alunos": [
+    {
+      "nome": "davidson",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 1
+    },
+    {
+      "nome": "fernanda",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 2
+    },
+    {
+      "nome": "conceição",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 3
+    },
+    {
+      "nome": "danielle",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 4
+    },
+    {
+      "nome": "riviane",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 5
+    },
+    {
+      "nome": "roberta",
+      "curso": "Back end",
+      "matricula": "xyz2022",
+      "id": 6
+    },
+    {
+      "nome": "Rebeca",
+      "curso": "corte e custura",
+      "matricula": "7",
+      "id": 7
+    },
+    {
+      "nome": "Vilma",
+      "curso": "Cozinha",
+      "matricula": "4566",
+      "id": 8
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+<h1>Calculadora</h1>
+<label for="valor1"> Valor 1: </label>
+<input name="valor1" id="valor1" type="number" placeholder="Digite o primeiro valor">
+<br><br>
+<label for="valor2"> Valor 2: </label>
+<input name="valor2" id="valor2" type="number" placeholder="Digite o segundo valor">
+<br><br>
+
+<label for="ops">Selecione a operação</label>
+ <select name="ops" id="operacao">
+   <option value="+">Adição</option>
+   <option value="-">Subtração</option>
+   <option value="*">Multiplicação</option>
+   <option value="/">Divisão</option>
+ </select>
+
+ <br><br>
+ <input type="submit" onclick="calcular()" value="Calcular">
+ <input type="submit" onclick="mudarcor()" value="Mudar cor">
+ <input type="submit" onclick="mostrarAluno()" value="Mostrar Aluno">
+
+ <p id="resultado"></p>
+
+</body>
+
+<!-- Aqui vai o código Javascript (*PROGRAMAÇÃO) -->
+<script>
+
+var aluno = {
+ nome: 'Davidon',
+ idade: '45',
+ curso: 'FronEnd',
+ sexo: 'masculino',
+ cor: 'pardo'
+}
+
+var pedido = {
+   valor: '30.00',
+   itens: 3,
+   cliente: {nome: 'Davidson', limite: 60},
+   data: '22/11/1976'
+ }
+
+function calcular(){
+ var valor1 = document.getElementById('valor1').value
+ var valor2 = document.getElementById('valor2').value
+ var operacao = document.getElementById('operacao').value
+
+ var resultado = calculo(valor1, valor2, operacao)
+
+ document.getElementById('resultado').innerHTML = 'O resultado é: '+ resultado
+
+}
+
+function calculo(v1, v2, op){
+ if(op == '+'){
+   return (+v1) + (+v2)
+ }else if(op == '-'){
+   return (+v1) - (+v2)
+ }else if(op == '*'){
+   return (+v1) * (+v2)
+ }else{
+   return (+v1) / (+v2)
+ }
+
+}
+
+function mudarcor(){
+ document.getElementById('valor1').style.color = "red"
+ document.getElementById('valor2').style.color = "blue"
+}
+
+function mostrarAluno(){
+ document.getElementById('resultado').innerHTML = 'Nome: '+ aluno.nome + ', Idade: '+ ', Curso: '+ aluno.curso + ', Sexo: '+ aluno.sexo  + ', Cor: '+ aluno.cor
+}
+
+ (function(){
+   console.log('O nome do cliente :', pedido.cliente.nome, ' e ssu limite: ', pedido.cliente.limite)
+ }
+ )()
+</script>
